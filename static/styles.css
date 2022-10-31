@@ -1,0 +1,136 @@
+:root{
+    --primary: #49416D;
+    --offprimary: #605189;
+    --primary-light: #A882DD;
+    --primary-light-light: #d5b9f1;
+    --light: #E0EFDE;
+    --cyan: #B3F2DD;
+}
+
+body {
+    color: var(--primary-light-light);
+    background-color: var(--primary);
+}
+
+
+
+
+.rightalign {
+    text-align: left !important;
+}
+
+.tmargin {
+    margin-top: 6rem;
+}
+
+.bmargin {
+    margin-bottom: 1rem;
+}
+
+.buttonMargin {
+    margin-right: .5rem;
+}
+
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+.light {
+    background-color: var(--primary-light-light);
+    color: var(--primary);
+    border: none;
+}
+
+input:hover.button {
+    background-color: var(--primary-light);
+    color: var(--primary-light-light);
+    border: none;
+}
+
+td.column:nth-child(even) {
+    background-color: var(--offprimary);
+}
+
+input.button {
+    background-color: var(--primary-light-light);
+    color: var(--primary);
+    border: none;
+}
+
+.input-box {
+    border: .1rem solid var(--primary-light-light) !important;
+    background-color: var(--primary);
+    color: var(--primary-light-light);
+    border: none;
+}
+
+::-webkit-input-placeholder {
+    color: var(--primary-light);
+    opacity: 75%;
+ }
+
+/* Colors for brand */
+.light-theme
+{
+    background-color: var(--primary-light-light);
+}
+
+.container
+{
+    width: 80%;
+}
+
+table
+{
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+tr
+{
+    border-bottom: 2px solid var(--primary-light-light);
+}
+
+.no_line
+{
+    border-bottom: none;
+}
+
+th, td
+{
+    padding: 0.5rem;
+}
+
+.navbar-brand img {
+    max-height: 3.5rem;
+    margin: -.5rem .5rem 0 0;
+}
+
+.d-flex p {
+    margin: 0 1rem 0 0;
+}
+
+.overflow {
+    overflow-x: scroll;
+}
+
+.container::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+.container::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/* Handle */
+.container::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: var(--primary-light);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}

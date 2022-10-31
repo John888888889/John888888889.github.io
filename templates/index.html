@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <table aria-label="Table of transactions">
+            <thead>
+                <tr>
+                    <th width="20%" class="text-start">Date</th>
+                    <th width="30%" class="text-start">Memo</th>
+                    <th width="10%" class="text-end">Price</th>
+                    <th width="20%" class="text-end">Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                <tr>
+                    <td class="text-start">{{ transaction.date }}</td>
+                    <td class="text-start">{{ transaction.memo }}</td>
+                    <td class="text-end">{{ transaction.amount }}</td>
+                    <td class="text-end">
+                        <div class="container float-end">
+                            <!--category search-->
+                            <form class="d-flex" action="/" method="POST">
+                                <input class="input-box rmargin" list="categories" name="category" placeholder="Input category...">
+                                <datalist id="categories">
+                                    {% for category in categories %}
+                                    <input name="id" type="hidden" value="{{ transaction.id }}">
+                                    <option value="{{category.category}}">{{category.category}}</option>
+                                    {% endfor %}
+                                </datalist>
+                                <input class="button buttonMargin" type="submit">
+                                <input name="extend" type="checkbox" value="{{ transaction.memo }}">
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}
+    <!--
+
+        <div class="container d-flex">
+                            <!-first category button->
+                            <form action="/" method="POST">
+                                <input name="id" type="hidden" value="{{ transaction.id }}">
+                                <input name="category" type="hidden" value="Gym">
+                                <input class="button" type="submit" value="Gym">
+                            </form>
+                            <!-second category button->
+                            <form action="/" method="POST">
+                                <input name="id" type="hidden" value="{{ transaction.id }}">
+                                <input name="category" type="hidden" value="Groceries">
+                                <input class="button" type="submit" value="Groceries">
+                            </form>
+                        </div>
+        -->

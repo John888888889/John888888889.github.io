@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit
+{% endblock %}
+
+{% block main %}
+<div class="d-flex justify-content-between container">
+    <div class="">
+        <div>
+            <H2>Rules</H2>
+            <form action="/edit" method="post">
+                <div class="bmargin rightalign">
+                    <label for="rule">When memo contains:</label>
+                    <br>
+                    <input class="input-box" name="keyword" placeholder="Insert keyword" required>
+                </div>
+                <div class="bmargin rightalign">
+                    <label for="rule">Catogorise as:</label>
+                    <br>
+                    <input class="input-box" list="categories" name="category" placeholder="Select category" required>
+                    <datalist id="categories">
+                        {% for category in categories %}
+                        <input name="category_id" type="hidden" value="{{category.id}}">
+                        <option value="{{category.category}}">{{category.category}}</option>
+                        {% endfor %}
+                    </datalist>
+                </div>
+                <input class="button rightalign" type="submit" value="submit">
+            </form>
+        </div>
+
+        <div class="tmargin">
+            <ul class="d-flex flex-column">
+                {% for rule in rules %}
+                <li class="d-flex">
+                    <form class="buttonMargin" action="/edit" method="post">
+                        <input name="rule_id" type="hidden" value="{{ rule.id }}">
+                        <input class="button" name="deregister" type="submit" value="X">
+                    </form>
+                    <p>When containing <b>{{ rule.rule }}</b> categorise as <b>{{ rule.category_name }}</b></p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div>
+        <H1>List of categories</H1>
+        <table class="flex-fill float-end" aria-label="List of Categories with delete buttons">
+            <tbody>
+                {% for category in categories %}
+                <tr>
+                    <td scope="row">{{ category.category }}</td>
+                    <td>
+                        <form action="/edit" method="post">
+                            <input name="category_id" type="hidden" value="{{ category.id }}">
+                            <input class="button" name="deregister" type="submit" value="X">
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+
+
+
+    <div class="container tmargin">
+        <table aria-label="Table of transactions with deregister button">
+            <thead>
+                <tr>
+                    <th width="20%" class="text-start">Date</th>
+                    <th width="30%" class="text-start">Memo</th>
+                    <th width="10%" class="text-end">Price</th>
+                    <th width="20%" class="text-end">Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                <tr>
+                    <td class="text-start">{{ transaction.date }}</td>
+                    <td class="text-start">{{ transaction.memo }}</td>
+                    <td class="text-end">{{ transaction.amount }}</td>
+                    <td class="text-end">{{ transaction.category_name }}</td>
+                    <td>
+                        <form action="/edit" method="post">
+                            <input name="transaction_id" type="hidden" value="{{ transaction.id }}">
+                            <input class="button" name="deregister" type="submit" value="X">
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+{% endblock %}

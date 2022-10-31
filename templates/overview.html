@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Overview
+{% endblock %}
+
+{% block main %}
+<div class="container overflow">
+    <table aria-label="Table of monthly expenditures organised into categories">
+        <!--Headers-->
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                {% for month in months_years %}
+                  <th scope="col">{{ month.month }}/{{ month.year }}</th>
+                {% endfor %}
+                <th scope="col">Total</th>
+              </tr>
+        </thead>
+        <!--Body-->
+        <tbody>
+          {% for category in categories %}
+            <tr>
+              <th scope="row">{{ category.category }}</th>
+              {% for column in columns %}
+                <td class="column">{{ transactions[category.category][column]["amount"] }}</td>
+              {% endfor %}
+              <td class="light">{{ total_for_categories[category.category] }}</td>
+            </tr>
+          {% endfor %}
+          <tr>
+            <th scope="col">Total</th>
+            {% for total in months_total %}
+              <td>{{ total }}</td>
+            {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+</div>
+{% endblock %}
